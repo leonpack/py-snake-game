@@ -28,8 +28,9 @@ while game_is_on:
     snake.move()
     
     if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
-        game_is_on = False
-        messagebox.showinfo("Game Over", f"Your final scores: {scoreboard.score}")
+        # game_is_on = False
+        scoreboard.reset()
+        snake.reset()
 
     if snake.head.distance(food) < 15:
         food.next_random_location()
@@ -40,8 +41,8 @@ while game_is_on:
         if segment == snake.head:
             pass
         elif snake.head.distance(segment) < 10:
-            game_is_on = False
-            messagebox.showinfo("Game Over", f"Your final scores: {scoreboard.score}")
-
+            # game_is_on = False
+            scoreboard.reset()
+            snake.reset()
 
 screen.exitonclick()
